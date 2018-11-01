@@ -1,7 +1,7 @@
 const { Player, Coach, Team } = require('../database/models');
-const players = require('../data/players');
-const coaches = require('../data/coaches');
-const teams = require('../data/teams');
+const players = require('../data/players'); // 51 players;
+const coaches = require('../data/coaches'); // 3 coaches;
+const teams = require('../data/teams'); // 3 teams;
 
 const populatePlayersTable = async (players) => {
   for (let i = 0; i < players.length; i++) {
