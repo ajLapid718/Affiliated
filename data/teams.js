@@ -16,3 +16,5 @@ const teams = [
     "simpleName": "Warriors"
   }
 ];
+
+module.exports = teams;

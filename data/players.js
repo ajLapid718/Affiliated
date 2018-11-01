@@ -1,5 +1,4 @@
-// New York Knicks;
-const knicksRoster = [
+const players = [
   {
     "firstName": "Ron",
     "lastName": "Baker"
@@ -67,11 +66,7 @@ const knicksRoster = [
   {
     "firstName": "Troy",
     "lastName": "Williams"
-  }
-];
-
-// Boston Celtics;
-const celticsRoster = [
+  },
   {
     "firstName": "Kadeem",
     "lastName": "Allen"
@@ -147,11 +142,7 @@ const celticsRoster = [
   {
     "firstName": "Guerschon",
     "lastName": "Yabusele"
-  }
-];
-
-// Golden State Warriors;
-const warriorsRoster = [
+  },
   {
     "firstName": "Jordan",
     "lastName": "Bell"
@@ -213,3 +204,5 @@ const warriorsRoster = [
     "lastName": "Young"
   }
 ];
+
+module.exports = players;

@@ -12,4 +12,6 @@ const coaches = [
     "firstName": "David",
     "lastName": "Fizdale"
   }
-]
+];
+
+module.exports = coaches;
