@@ -3,9 +3,11 @@ const router = express.Router();
 
 // Subrouters;
 const playersRouter = require('./players');
+const teamsRouter = require('./teams');
 
 // Mount our subrouters to assemble our apiRouter;
 router.use('/players', playersRouter);
+router.use('/teams', teamsRouter);
 
 // Error handling middleware;
 router.use((req, res, next) => {
