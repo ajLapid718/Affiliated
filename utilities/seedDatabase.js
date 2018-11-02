@@ -6,7 +6,19 @@ const teams = require('../data/teams'); // 3 teams;
 const populatePlayersTable = async (players) => {
   for (let i = 0; i < players.length; i++) {
     let currentPlayer = players[i];
-    await Player.create(currentPlayer);
+    const builtPlayer = Player.build(currentPlayer);
+
+    if (i < 17) {
+      builtPlayer.teamId = 1;
+    }
+    else if (i >= 17 && i < 34) {
+      builtPlayer.teamId = 2;
+    }
+    else {
+      builtPlayer.teamId = 3;
+    }
+
+    await builtPlayer.save();
   }
 }
 
@@ -26,9 +38,9 @@ const populateTeamsTable = async (teams) => {
 
 const seedDatabase = async () => {
   try {
+    await populateTeamsTable(teams);
     await populatePlayersTable(players);
     await populateCoachesTable(coaches);
-    await populateTeamsTable(teams);
     console.log("Successfully seeded!");
     process.exit(0);
   }
