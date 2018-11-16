@@ -16,5 +16,11 @@ router.get('/:id', function(req, res, next) {
     .catch(next)
 });
 
+// Find all of the trainers who train a particular player;
+router.get('/:id/trainers', async function(req, res, next) {
+  const foundPlayer = await Player.findOne({ where: { id: req.params.id } });
+  res.json(await foundPlayer.getTrainers());
+});
+
 // Export our router, so that it can be imported to construct our apiRouter;
 module.exports = router;
