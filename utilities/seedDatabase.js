@@ -9,7 +9,7 @@ const populatePlayersTable = async (players) => {
   for (let i = 0; i < players.length; i++) {
     let currentPlayer = players[i];
     const builtPlayer = Player.build(currentPlayer);
-    console.log(Object.keys(builtPlayer.__proto__));
+    // console.log(Object.keys(builtPlayer.__proto__));
 
     if (i < 17) {
       builtPlayer.teamId = 1;
