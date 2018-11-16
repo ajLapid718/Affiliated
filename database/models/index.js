@@ -35,7 +35,9 @@ Team.createCoach;
 Team.removeCoach;
 Team.hasCoach;
 
-Similarly, the hasMany() association provides the following methods for the instance of the Source:
+The hasMany() association provides the following methods for the instance of the Source:
+
+Using our specific example, hasMany() makes the following methods available and scenarios possible;
 
 Team.hasMany(Player);
 
@@ -47,7 +49,9 @@ Team.removePlayer;
 Team.hasPlayer;
 Team.hasPlayers;
 
-Similarly, the belongsTo() association provides the following methods for the instance of the Source:
+The belongsTo() association provides the following methods for the instance of the Source:
+
+Using our specific example, belongsTo() makes the following methods available and scenarios possible;
 
 Player.belongsTo(Team);
 
@@ -60,6 +64,36 @@ Coach.belongsTo(Team);
 Coach.getTeam;
 Coach.setTeam;
 Coach.createTeam;
+
+The belongsToMany() association provides the following methods for the instance of the Source:
+
+Using our specific example, belongsToMany() makes the following methods available and scenarios possible;
+
+Trainer.belongsToMany(Player, { through: 'TrainersPlayers' });
+
+Trainer.getPlayers;
+Trainer.countPlayers;
+Trainer.hasPlayer;
+Trainer.hasPlayers;
+Trainer.setPlayers;
+Trainer.addPlayer;
+Trainer.addPlayers;
+Trainer.removePlayer;
+Trainer.removePlayers;
+Trainer.createPlayer;
+
+Player.belongsToMany(Trainer, { through: 'TrainersPlayers' });
+
+Player.getTrainers;
+Player.countTrainers;
+Player.hasTrainer;
+Player.hasTrainers;
+Player.setTrainers;
+Player.addTrainer;
+Player.addTrainers;
+Player.removeTrainer;
+Player.removeTrainers;
+Player.createTrainer;
 
 */
 
