@@ -36,7 +36,9 @@ const populatePlayersTable = async (players) => {
 const populateCoachesTable = async (coaches) => {
   for (let i = 0; i < coaches.length; i++) {
     let currentCoach = coaches[i];
-    await Coach.create(currentCoach);
+    let builtCoach = await Coach.build(currentCoach);
+    builtCoach.teamId = i + 1;
+    await builtCoach.save();
   }
 }
 
