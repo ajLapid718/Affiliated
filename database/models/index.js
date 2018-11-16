@@ -17,8 +17,8 @@ Team.hasOne(Coach); // A one-to-one relationship that adds the column titled "te
 Coach.belongsTo(Team); // A one-to-one relationship that adds the column titled "teamId" to the table of coaches;
 
 // N:M;
-Trainer.belongsToMany(Player, { through: 'TrainersPlayers' });
-Player.belongsToMany(Trainer, { through: 'TrainersPlayers' });
+Trainer.belongsToMany(Player, { through: 'TrainersPlayers' }); // A many-to-many relationship that generates a JOIN table called TrainersPlayers, which contains a column titled trainerId and a column titled playerId;
+Player.belongsToMany(Trainer, { through: 'TrainersPlayers' }); // A many-to-many relationship that generates a JOIN table called TrainersPlayers, which contains a column titled trainerId and a column titled playerId;
 
 /*
 
