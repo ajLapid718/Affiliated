@@ -16,6 +16,10 @@ Player.belongsTo(Team); // A one-to-one relationship that adds the column titled
 Team.hasOne(Coach); // A one-to-one relationship that adds the column titled "teamId" to the table of coaches;
 Coach.belongsTo(Team); // A one-to-one relationship that adds the column titled "teamId" to the table of coaches;
 
+// N:M;
+Trainer.belongsToMany(Player, { through: 'TrainersPlayers' });
+Player.belongsToMany(Trainer, { through: 'TrainersPlayers' });
+
 /*
 
 The hasOne() association provides the following methods for the instance of the Source;
