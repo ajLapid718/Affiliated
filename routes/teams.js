@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Team, Player, Coach } = require('../database/models');
+const { Team } = require('../database/models');
 
 // Find all the teams;
 router.get('/', function(req, res, next) {
@@ -12,7 +12,6 @@ router.get('/', function(req, res, next) {
 // Find a particular team and eager load all players who belong on/share the same team;
 router.get('/:id/players', async function(req, res, next) {
   const foundTeam = await Team.findOne({where: { id: req.params.id }});
-
   res.json(await foundTeam.getPlayers());
 });
 
