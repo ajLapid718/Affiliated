@@ -6,22 +6,30 @@ const teams = require('../data/teams'); // 3 teams;
 const trainers = require('../data/trainers'); // 2 trainers;
 
 const populatePlayersTable = async (players) => {
+  let tylerrelph10 = await Trainer.create(trainers[0]); // Tyler Relph;
+  let jlawbball = await Trainer.create(trainers[1]); // Jordan Lawley;
+
   for (let i = 0; i < players.length; i++) {
     let currentPlayer = players[i];
-    const builtPlayer = Player.build(currentPlayer);
+    let builtPlayer = await Player.build(currentPlayer);
     // console.log(Object.keys(builtPlayer.__proto__));
 
     if (i < 17) {
       builtPlayer.teamId = 1;
+      await builtPlayer.save();
+      await builtPlayer.addTrainer(tylerrelph10); // Players trained solely by Tyler Relph;
     }
     else if (i >= 17 && i < 34) {
       builtPlayer.teamId = 2;
+      await builtPlayer.save();
+      await builtPlayer.addTrainer(jlawbball); // Players trained solely by Jordan Lawley;
     }
     else {
       builtPlayer.teamId = 3;
+      await builtPlayer.save();
+      await builtPlayer.addTrainer(tylerrelph10); // Players trained by both Tyler Relph...;
+      await builtPlayer.addTrainer(jlawbball); // ...and by Jordan Lawley, too;
     }
-
-    await builtPlayer.save();
   }
 }
 
@@ -39,19 +47,19 @@ const populateTeamsTable = async (teams) => {
   }
 }
 
-const populateTrainersTable = async (trainers) => {
-  for (let i = 0; i < trainers.length; i++) {
-    let currentTrainer = trainers[i];
-    await Trainer.create(currentTrainer);
-  }
-}
+// const populateTrainersTable = async (trainers) => {
+//   for (let i = 0; i < trainers.length; i++) {
+//     let currentTrainer = trainers[i];
+//     await Trainer.create(currentTrainer);
+//   }
+// }
 
 const seedDatabase = async () => {
   try {
     await populateTeamsTable(teams);
     await populatePlayersTable(players);
     await populateCoachesTable(coaches);
-    await populateTrainersTable(trainers);
+    // await populateTrainersTable(trainers);
     console.log("Successfully seeded!");
     process.exit(0);
   }
