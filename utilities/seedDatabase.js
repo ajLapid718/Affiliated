@@ -1,7 +1,9 @@
-const { Player, Coach, Team } = require('../database/models');
+const { Player, Coach, Team, Trainer } = require('../database/models');
+
 const players = require('../data/players'); // 51 players;
 const coaches = require('../data/coaches'); // 3 coaches;
 const teams = require('../data/teams'); // 3 teams;
+const trainers = require('../data/trainers'); // 2 trainers;
 
 const populatePlayersTable = async (players) => {
   for (let i = 0; i < players.length; i++) {
@@ -36,11 +38,19 @@ const populateTeamsTable = async (teams) => {
   }
 }
 
+const populateTrainersTable = async (trainers) => {
+  for (let i = 0; i < trainers.length; i++) {
+    let currentTrainer = trainers[i];
+    await Trainer.create(currentTrainer);
+  }
+}
+
 const seedDatabase = async () => {
   try {
     await populateTeamsTable(teams);
     await populatePlayersTable(players);
     await populateCoachesTable(coaches);
+    await populateTrainersTable(trainers);
     console.log("Successfully seeded!");
     process.exit(0);
   }
