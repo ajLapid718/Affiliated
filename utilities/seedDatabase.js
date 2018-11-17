@@ -14,17 +14,17 @@ const populatePlayersTable = async (players) => {
     let builtPlayer = await Player.build(currentPlayer);
     // console.log(Object.keys(builtPlayer.__proto__));
 
-    if (i < 17) {
+    if (i < 11) {
       builtPlayer.teamId = 1;
       await builtPlayer.save();
       await builtPlayer.addTrainer(tylerrelph10); // Players trained solely by Tyler Relph;
     }
-    else if (i >= 17 && i < 34) {
+    else if (i >= 11 && i < 22) {
       builtPlayer.teamId = 2;
       await builtPlayer.save();
       await builtPlayer.addTrainer(jlawbball); // Players trained solely by Jordan Lawley;
     }
-    else {
+    else if (i >= 22 && i < 33) {
       builtPlayer.teamId = 3;
       await builtPlayer.save();
       await builtPlayer.addTrainer(tylerrelph10); // Players trained by both Tyler Relph...;
