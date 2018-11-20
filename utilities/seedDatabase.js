@@ -87,6 +87,7 @@ const seedDatabase = async () => {
     await populatePlayersTable(players);
     await populateCoachesTable(coaches);
     // await populateTrainersTable(trainers);
+    await populateGamesTable(games);
     console.log("Successfully seeded!");
     process.exit(0);
   }
