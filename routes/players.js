@@ -17,6 +17,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 // Find all of the trainers who train a particular player;
+// TODO: Provide an example of how to remove the JOIN table from coming up in the result from the query;
 router.get('/:id/trainers', async function(req, res, next) {
   const foundPlayer = await Player.findOne({ where: { id: req.params.id } });
   res.json(await foundPlayer.getTrainers());

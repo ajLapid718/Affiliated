@@ -10,8 +10,9 @@ router.get('/', function(req, res, next) {
 });
 
 // Find a particular trainer and eager load all players who this particular trainer trains;
+// TODO: Provide an example of how to remove the JOIN table from coming up in the result from the query;
 router.get('/:id/players', async function(req, res, next) {
-  const foundTrainer = await Trainer.findOne({where: { id: req.params.id }});
+  const foundTrainer = await Trainer.findOne({ where: { id: req.params.id } });
   res.json(await foundTrainer.getPlayers());
 });
 
