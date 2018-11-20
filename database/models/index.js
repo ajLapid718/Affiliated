@@ -4,6 +4,7 @@ const Player = require('./player');
 const Coach = require('./coach');
 const Team = require('./team');
 const Trainer = require('./trainer');
+const Game = require('./game');
 
 // Associations;
 // Source.association(Target);
@@ -101,5 +102,6 @@ module.exports = {
   Player,
   Coach,
   Team,
-  Trainer
+  Trainer,
+  Game
 };
