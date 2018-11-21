@@ -21,6 +21,10 @@ Coach.belongsTo(Team); // A one-to-one relationship that adds the column titled 
 Trainer.belongsToMany(Player, { through: 'TrainersPlayers' }); // A many-to-many relationship that generates a JOIN table called TrainersPlayers, which contains a column titled trainerId and a column titled playerId;
 Player.belongsToMany(Trainer, { through: 'TrainersPlayers' }); // A many-to-many relationship that generates a JOIN table called TrainersPlayers, which contains a column titled trainerId and a column titled playerId;
 
+// N:M;
+Team.hasOne(Game, { as: 'HomeTeam', foreignKey: 'homeTeamId' });
+Team.hasOne(Game, { as: 'AwayTeam', foreignKey: 'awayTeamId' });
+
 /*
 
 The hasOne() association provides the following methods for the instance of the Source;
