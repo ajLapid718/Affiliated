@@ -25,8 +25,6 @@ Player.belongsToMany(Trainer, { through: 'TrainersPlayers' }); // A many-to-many
 Team.hasOne(Game, { as: 'HomeTeam', foreignKey: 'homeTeamId' });
 Team.hasOne(Game, { as: 'AwayTeam', foreignKey: 'awayTeamId' });
 
-Game.belongsTo(Team);
-
 /*
 
 The hasOne() association provides the following methods for the instance of the Source;
