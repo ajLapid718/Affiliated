@@ -1,7 +1,7 @@
 // Seed data to populate the table of games;
 const games = [
   {
-    "dateOfGame": "11/11/2018",
+    "dateOfGame": "11/10/2018",
     "location": "Boston",
     "homeTeamScore": 89,
     "awayTeamScore": 82
@@ -13,7 +13,7 @@ const games = [
     "awayTeamScore": 79
   },
   {
-    "dateOfGame": "11/11/2018",
+    "dateOfGame": "11/12/2018",
     "location": "New York",
     "homeTeamScore": 76,
     "awayTeamScore": 71
