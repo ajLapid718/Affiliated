@@ -56,29 +56,38 @@ router.get('/:id/coach', async (req, res, next) => {
 });
 
 // Find all of the games of a particular team;
+// NOTE: consider querying the Game table and finding which games have the particular teamId as either the homeTeamId OR (Sequelize operator) the awayTeamId;
 router.get('/:id/games', async (req, res, next) => {
-  // TODO: Declare a more semantic variable name, add error handling, and consider querying the Game table and finding which games have the particular teamId as either the homeTeamId OR (Sequelize operator) the awayTeamId;
-  let huh = await Team.findOne({
-    where: {
-      id: req.params.id
-    },
-    include: [{
-      model: Game,
-      as: 'HomeGames',
-      where: {
-        homeTeamId: req.params.id
-      }
-    },
-    {
-      model: Game,
-      as: 'AwayGames',
-      where: {
-        awayTeamId: req.params.id
-      }
-    }]
-  })
+  let teamWithExhibitionGames;
 
-  res.json(huh);
+  try {
+    teamWithExhibitionGames = await Team.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [
+        {
+          model: Game,
+          as: 'HomeGames',
+          where: {
+            homeTeamId: req.params.id
+          }
+        },
+        {
+          model: Game,
+          as: 'AwayGames',
+          where: {
+            awayTeamId: req.params.id
+          }
+        }
+      ]
+    });
+  }
+  catch (err) {
+    next(err);
+  }
+
+  res.json(teamWithExhibitionGames);
 });
 
 // Export our router, so that it can be imported to construct our apiRouter;
