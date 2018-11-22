@@ -22,8 +22,8 @@ Trainer.belongsToMany(Player, { through: 'TrainersPlayers' }); // A many-to-many
 Player.belongsToMany(Trainer, { through: 'TrainersPlayers' }); // A many-to-many relationship that generates a JOIN table called TrainersPlayers, which contains a column titled trainerId and a column titled playerId;
 
 // O:O with a double join on the same table;
-Team.hasOne(Game, { as: 'HomeTeam', foreignKey: 'homeTeamId' });
-Team.hasOne(Game, { as: 'AwayTeam', foreignKey: 'awayTeamId' });
+Team.hasOne(Game, { as: 'HomeTeam', foreignKey: 'homeTeamId' }); // A one-to-one relationship that adds the column titled "homeTeamId" to the table of Games (When eager-loading, the model and the query need to use the same alias, which is the value of the "as" property);
+Team.hasOne(Game, { as: 'AwayTeam', foreignKey: 'awayTeamId' }); // A one-to-one relationship that adds the column titled "awayTeamId" to the table of Games (When eager-loading, the model and the query need to use the same alias, which is the value of the "as" property);
 
 /*
 
