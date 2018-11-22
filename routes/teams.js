@@ -81,7 +81,7 @@ router.get('/:id/games', async (req, res, next) => {
     next(err);
   }
 
-  res.json(teamWithExhibitionGames);
+  res.status(200).json(teamWithExhibitionGames);
 });
 
 // Export our router, so that it can be imported to construct our apiRouter;
