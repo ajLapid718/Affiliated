@@ -68,17 +68,11 @@ router.get('/:id/games', async (req, res, next) => {
       include: [
         {
           model: Game,
-          as: 'HomeGames',
-          where: {
-            homeTeamId: req.params.id
-          }
+          as: 'HomeGames'
         },
         {
           model: Game,
-          as: 'AwayGames',
-          where: {
-            awayTeamId: req.params.id
-          }
+          as: 'AwayGames'
         }
       ]
     });
