@@ -26,8 +26,9 @@ Player.belongsToMany(Trainer, { through: 'TrainersPlayers' }); // A many-to-many
 // Team.belongsTo(Game, { as: 'AwayTeam', foreignKey: 'awayTeamId' }); // A one-to-one relationship that adds the column titled "awayTeamId" to the table of Games (When eager-loading, the model and the query need to use the same alias, which is the value of the "as" property);
 
 Game.belongsTo(Team, { as: 'HomeTeam', foreignKey: 'homeTeamId' });
-
 Game.belongsTo(Team, { as: 'AwayTeam', foreignKey: 'awayTeamId' });
+Team.hasMany(Game, { as: 'HomeGames', foreignKey: 'homeTeamId' });
+Team.hasMany(Game, { as: 'AwayGames', foreignKey: 'awayTeamId' });
 
 /*
 

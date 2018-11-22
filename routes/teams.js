@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Team } = require('../database/models');
+const { Team, Game } = require('../database/models');
 
 // Find all the teams;
 router.get('/', function(req, res, next) {
@@ -37,7 +37,7 @@ router.get('/:id/coach', async (req, res, next) => {
   let foundTeam;
 
   try {
-    foundTeam = await Team.findOne({where: { id: req.params.id }});
+    foundTeam = await Team.findOne({ where: { id: req.params.id } });
   }
   catch (err) {
     next(err);
@@ -53,6 +53,24 @@ router.get('/:id/coach', async (req, res, next) => {
   }
 
   res.status(200).json(coachOfTeam);
+});
+
+// Find all of the games of a particular team;
+router.get('/:id/games', async (req, res, next) => {
+  let huh = await Team.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: Game,
+      as: 'HomeGames',
+      where: {
+        homeTeamId: req.params.id
+      }
+    }]
+  })
+
+  res.json(huh);
 });
 
 // Export our router, so that it can be imported to construct our apiRouter;
