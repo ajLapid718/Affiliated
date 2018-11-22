@@ -67,6 +67,13 @@ router.get('/:id/games', async (req, res, next) => {
       where: {
         homeTeamId: req.params.id
       }
+    },
+    {
+      model: Game,
+      as: 'AwayGames',
+      where: {
+        awayTeamId: req.params.id
+      }
     }]
   })
 
