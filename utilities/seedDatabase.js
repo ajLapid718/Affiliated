@@ -43,12 +43,12 @@ const populateCoachesTable = async (coaches) => {
   }
 }
 
-const populateTeamsTable = async (teams) => {
-  for (let i = 0; i < teams.length; i++) {
-    let currentTeam = teams[i];
-    await Team.create(currentTeam);
-  }
-}
+// const populateTeamsTable = async (teams) => {
+//   for (let i = 0; i < teams.length; i++) {
+//     let currentTeam = teams[i];
+//     await Team.create(currentTeam);
+//   }
+// }
 
 // const populateTrainersTable = async (trainers) => {
 //   for (let i = 0; i < trainers.length; i++) {
@@ -58,9 +58,9 @@ const populateTeamsTable = async (teams) => {
 // }
 
 const populateGamesTable = async (games) => {
-  // let celtics = await Team.create(teams[0]);
-  // let knicks = await Team.create(teams[1]);
-  // let warriors = await Team.create(teams[2]);
+  let celtics = await Team.create(teams[0]);
+  let knicks = await Team.create(teams[1]);
+  let warriors = await Team.create(teams[2]);
 
   for (let i = 0; i < games.length; i++) {
     let currentGame = games[i];
@@ -68,26 +68,29 @@ const populateGamesTable = async (games) => {
 
     if (currentGame.location === "Boston") {
       await builtGame.save();
-      // await builtGame.setHomeTeam(celtics);
+      await builtGame.setHomeTeam(celtics);
+      await builtGame.setAwayTeam(knicks);
     }
     else if (currentGame.location === "New York") {
       await builtGame.save();
-      // await builtGame.setHomeTeam(knicks);
+      await builtGame.setHomeTeam(knicks);
+      await builtGame.setAwayTeam(celtics);
     }
     else if (currentGame.location === "Oakland") {
       await builtGame.save();
-      // await builtGame.setHomeTeam(warriors);
+      await builtGame.setHomeTeam(warriors);
+      await builtGame.setAwayTeam(knicks);
     }
   }
 }
 
 const seedDatabase = async () => {
   try {
-    await populateTeamsTable(teams);
+    // await populateTeamsTable(teams);
+    await populateGamesTable(games);
     await populatePlayersTable(players);
     await populateCoachesTable(coaches);
     // await populateTrainersTable(trainers);
-    await populateGamesTable(games);
     console.log("Successfully seeded!");
     process.exit(0);
   }
