@@ -1,4 +1,4 @@
-### Affiliated and Gists
+# Affiliated and Gists
 
 [Part I](https://gist.github.com/ajLapid718/ca67efc0360c617e5eebb6f1342ae53e)
 
@@ -19,3 +19,11 @@
 
 ### Part IV (Pending Gist)
 - Associate players (follower) with players (followee) involving aliasing and a self-reference on the table of players in order to determine who follows who on Instagram
+
+# How To Boot This Up
+
+- Clone the code contained in this repository onto your machine
+- Run the command `npm install` in your terminal
+- Run the command `npm start` in your terminal
+- Make sure you have a database titled "affiliated" in your postgres database
+- Navigate to `http://localhost:1234` in your browser and test the various endpoints either through the address bar or with the Postman application
